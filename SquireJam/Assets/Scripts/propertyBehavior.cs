@@ -63,6 +63,9 @@ public class propertyBehavior : MonoBehaviour {
 				
 				}
 
+
+
+
 	}
 
 	//This function will run code that increases the size of the boulder.
@@ -74,6 +77,10 @@ public class propertyBehavior : MonoBehaviour {
 		currentScale = Mathf.Lerp(previouseScale, currentScale, Time.time);
 
 		gameObject.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
+
+		if (gameObject.transform.localScale.x <= 0.003f) {
+			Time.timeScale = 0;
+		}
 	}
 
 	//This function will run code that decreases the size of the boulder
@@ -112,6 +119,7 @@ public class propertyBehavior : MonoBehaviour {
 		if (otherObject.gameObject.name == "Palm") {
 			shrinking = true;
 			shrinkAmount = 0.01f;
+
 				}
 
 		//Power up game objects

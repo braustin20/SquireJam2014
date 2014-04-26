@@ -21,7 +21,13 @@ public class propertyBehavior : MonoBehaviour {
 
 	}
 
+	//This function will run code that increases the size of the boulder
 	void growBoulder(){
+
+	}
+
+	//This function will run code that decreases the size of the boulder
+	void decreaseBoulder(){
 
 	}
 }

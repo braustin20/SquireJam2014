@@ -78,7 +78,7 @@ public class propertyBehavior : MonoBehaviour {
 
 		gameObject.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
 
-		if (gameObject.transform.localScale.x <= 0.003f) {
+		if (gameObject.transform.localScale.x <= 0.01f) {
 			Time.timeScale = 0;
 		}
 	}

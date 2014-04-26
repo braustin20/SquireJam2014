@@ -26,9 +26,14 @@ public class StaticEnemy: MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision other)
 	{
-		if(other.collider.gameObject.name == "Boulder"){
+		if(other.collider.gameObject.tag != "Terrain"){
 			if(this.objectScale <= other.collider.gameObject.transform.localScale.x){
-				rigidbody.AddExplosionForce(300.0f, other.gameObject.transform.position, 100.0f);
+				if(this.rigidbody == null){
+					this.gameObject.AddComponent<Rigidbody>();
+				}
+				rigidbody.mass = 0.01f;
+				rigidbody.AddForce(new Vector3(0, 0, 1.0f) * 100.0f);
+				//rigidbody.AddExplosionForce(3000.0f, other.gameObject.transform.position, 10.0f);
 				destroyed = true;
 			}
 		}

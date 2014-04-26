@@ -7,7 +7,8 @@ public class RollerControls : MonoBehaviour {
 
 	public float strafeSpeed = 20.0f;
 	public float constantSpeed = 15.0f;
-	public float acceleration = 1.0f;
+	public float acceleration = 10.0f;
+	public float jumpForce = 1500.0f;
 
 	private float groundedDelay = 0.5f;
 	private float timer = 0.0f;
@@ -55,6 +56,9 @@ public class RollerControls : MonoBehaviour {
 		}
 		if(Input.GetKey(KeyCode.S)){
 			boulder.rigidbody.AddForce(new Vector3(0, 0, -1.0f) * acceleration); 
+		}
+		if(Input.GetKeyDown(KeyCode.Space)){
+			boulder.rigidbody.AddForce(new Vector3(0, 1.0f, 0) * jumpForce); 
 		}
 	}
 	void OnCollisionExit(Collision other){

@@ -10,16 +10,18 @@ public class propertyBehavior : MonoBehaviour {
 	public bool onEarth;
 	public float currentScale;
 
+	private float timer;
 	// Use this for initialization
 	void Start () {
-		
+		timer = 0;
+		currentScale = 0.1f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		if (onFire == true) {
-			growBoulder(0.1f);
+
 				}
 		if (onWater == true) {
 				
@@ -41,7 +43,7 @@ public class propertyBehavior : MonoBehaviour {
 	void growBoulder(float sizeIncrease){
 		currentScale = currentScale + sizeIncrease;
 
-		currentScale = Mathf.Lerp(1, currentScale, Time.time);
+		currentScale = Mathf.Lerp(0.5, currentScale, Time.time);
 
 		gameObject.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
 	}
@@ -58,6 +60,7 @@ public class propertyBehavior : MonoBehaviour {
 
 	//Function where we will change the boolean variables for the most recent property encountered
 	void OnCollisionEnter(Collision otherObject){
+		Debug.Log ("ENTERED");
 		if (otherObject.gameObject.tag == "fire") {
 
 				}
@@ -72,6 +75,15 @@ public class propertyBehavior : MonoBehaviour {
 				}
 		if (otherObject.gameObject.tag == "snow") {
 				
+				}
+		//Hostile game objects
+		if (otherObject.gameObject.name == "spikes") {
+
+				}
+		//Power up game objects
+		if (otherObject.gameObject.name == "powerCube") {
+			Debug.Log("Entered Collision");
+			growBoulder(0.01f);
 				}
 	}
 
@@ -90,6 +102,14 @@ public class propertyBehavior : MonoBehaviour {
 			
 		}
 		if (otherObject.tag == "snow") {
+			
+		}
+		//Hostile game objects
+		if (otherObject.gameObject.name == "spikes") {
+			
+		}
+		//Power up game objects
+		if (otherObject.gameObject.name == " ") {
 			
 		}
 	}

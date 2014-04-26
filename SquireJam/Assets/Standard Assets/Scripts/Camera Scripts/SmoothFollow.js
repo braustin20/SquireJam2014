@@ -29,7 +29,7 @@ function LateUpdate () {
 		return;
 	
 	// Calculate the current rotation angles
-	var wantedRotationAngle = target.eulerAngles.y;
+	var wantedRotationAngle = 0;
 	var wantedHeight = target.position.y + height;
 		
 	var currentRotationAngle = transform.eulerAngles.y;

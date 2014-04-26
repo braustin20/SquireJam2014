@@ -8,7 +8,7 @@ public class propertyBehavior : MonoBehaviour {
 	public bool onIce;
 	public bool onSnow;
 	public bool onEarth;
-	public float newScale;
+	public float currentScale;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,7 @@ public class propertyBehavior : MonoBehaviour {
 	void Update () {
 
 		if (onFire == true) {
-			growBoulder();
+			growBoulder(2.0f);
 				}
 		if (onWater == true) {
 				
@@ -36,15 +36,19 @@ public class propertyBehavior : MonoBehaviour {
 
 	}
 
-	//This function will run code that increases the size of the boulder
-	void growBoulder(){
-		newScale = Mathf.Lerp(1, 5, Time.time);
+	//This function will run code that increases the size of the boulder.
+	//This function requires a float to be inputed
+	void growBoulder(float sizeIncrease){
+		//currentScale
 
-		gameObject.transform.localScale = new Vector3(newScale, 1, newScale);
+		currentScale = Mathf.Lerp(1, 5, Time.time);
+
+		gameObject.transform.localScale = new Vector3(currentScale, 1, currentScale);
 	}
 
 	//This function will run code that decreases the size of the boulder
-	void decreaseBoulder(){
+	//This function requires an float to be inputed
+	void decreaseBoulder(float sizeDecrease){
 
 	}
 

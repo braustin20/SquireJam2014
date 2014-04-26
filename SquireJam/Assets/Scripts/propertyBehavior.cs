@@ -19,7 +19,7 @@ public class propertyBehavior : MonoBehaviour {
 	void Update () {
 
 		if (onFire == true) {
-			growBoulder(2.0f);
+			growBoulder(0.1f);
 				}
 		if (onWater == true) {
 				
@@ -39,17 +39,21 @@ public class propertyBehavior : MonoBehaviour {
 	//This function will run code that increases the size of the boulder.
 	//This function requires a float to be inputed
 	void growBoulder(float sizeIncrease){
-		//currentScale
+		currentScale = currentScale + sizeIncrease;
 
-		currentScale = Mathf.Lerp(1, 5, Time.time);
+		currentScale = Mathf.Lerp(1, currentScale, Time.time);
 
-		gameObject.transform.localScale = new Vector3(currentScale, 1, currentScale);
+		gameObject.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
 	}
 
 	//This function will run code that decreases the size of the boulder
 	//This function requires an float to be inputed
 	void decreaseBoulder(float sizeDecrease){
-
+		currentScale = currentScale - sizeDecrease;
+		
+		currentScale = Mathf.Lerp(1, currentScale, Time.time);
+		
+		gameObject.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
 	}
 
 	//Function where we will change the boolean variables for the most recent property encountered

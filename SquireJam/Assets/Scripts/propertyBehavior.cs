@@ -18,6 +18,21 @@ public class propertyBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if (onFire == true) {
+
+				}
+		if (onWater == true) {
+				
+				}
+		if (onIce == true) {
+				
+				}
+		if (onSnow == true) {
+				
+				}
+		if (onEarth == true) {
+				
+				}
 		
 	}
 

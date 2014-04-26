@@ -9,6 +9,11 @@ public class propertyBehavior : MonoBehaviour {
 	public bool onSnow;
 	public bool onEarth;
 	public float currentScale;
+	float previouseScale;
+
+	//This bool 
+	bool growing;
+	bool shrinking;
 
 	private float timer;
 	// Use this for initialization
@@ -20,6 +25,26 @@ public class propertyBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if (growing == true) {
+			timer += Time.deltaTime;
+			if(timer < 0.05f){
+				growBoulder(0.01f);
+			}else{
+				growing = false;
+				timer = 0;
+			}
+				}
+		if (shrinking == true) {
+			timer += Time.deltaTime;
+			if(timer < 0.05f){
+				decreaseBoulder(0.01f);
+			}else{
+				shrinking = false;
+				timer = 0;
+			}
+		}
+		
+		
 		if (onFire == true) {
 
 				}
@@ -41,9 +66,10 @@ public class propertyBehavior : MonoBehaviour {
 	//This function will run code that increases the size of the boulder.
 	//This function requires a float to be inputed
 	void growBoulder(float sizeIncrease){
+		previouseScale = currentScale;
 		currentScale = currentScale + sizeIncrease;
 
-		currentScale = Mathf.Lerp(0.5, currentScale, Time.time);
+		currentScale = Mathf.Lerp(previouseScale, currentScale, Time.time);
 
 		gameObject.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
 	}
@@ -77,13 +103,14 @@ public class propertyBehavior : MonoBehaviour {
 				
 				}
 		//Hostile game objects
-		if (otherObject.gameObject.name == "spikes") {
-
+		if (otherObject.gameObject.name == "shrinkCube") {
+			shrinking = true;
 				}
 		//Power up game objects
 		if (otherObject.gameObject.name == "powerCube") {
 			Debug.Log("Entered Collision");
-			growBoulder(0.01f);
+			growing = true;
+			//growBoulder(0.01f);
 				}
 	}
 

@@ -9,7 +9,7 @@ public class RollerControls : MonoBehaviour {
 	public float constantSpeed = 1.0f;
 	public float acceleration = 1.0f;
 
-	private float groundedDelay = 2.0f;
+	private float groundedDelay = 0.5f;
 	private float timer = 0.0f;
 
 	public AudioClip rolling;
@@ -33,6 +33,16 @@ public class RollerControls : MonoBehaviour {
 			}
 		}
 
+		if(audio.clip != rolling && grounded){
+			audio.clip = rolling;
+			audio.volume = 0.3f;
+			audio.Play();
+		}
+		else if(audio.clip != wind && !grounded){
+			audio.clip = wind;
+			audio.volume = 1.0f;
+			audio.Play();
+		}
 
 		if(Input.GetKey(KeyCode.A)){
 			boulder.rigidbody.AddForce(new Vector3(-1.0f, 0, 0) * strafeSpeed); 

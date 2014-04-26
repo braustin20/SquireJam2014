@@ -116,7 +116,7 @@ public class propertyBehavior : MonoBehaviour {
 			shrinking = true;
 			shrinkAmount = 0.01f;
 				}
-		if (otherObject.gameObject.name == "Palm") {
+		if (otherObject.gameObject.name == "Palm" ) {
 			shrinking = true;
 			shrinkAmount = 0.01f;
 
@@ -129,6 +129,12 @@ public class propertyBehavior : MonoBehaviour {
 			increaseAmount = 0.01f;
 			//growBoulder(0.01f);
 				}
+		if (otherObject.gameObject.name == "Bush") {
+			Debug.Log ("Hit bush");
+			growing = true;
+			increaseAmount = 0.01f;
+		}
+
 	}
 
 	//Function where we will change the boolean variables for the most recent property encountered

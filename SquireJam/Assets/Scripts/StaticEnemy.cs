@@ -23,9 +23,9 @@ public class StaticEnemy: MonoBehaviour {
 			}
 		}
 	}
-	void OnTriggerEnter(Collider other)
+	void OnCollisionEnter(Collision other)
 	{
-		if(other.gameObject.name == "Boulder"){
+		if(other.collider.gameObject.name == "Boulder"){
 			rigidbody.AddExplosionForce(300.0f, other.gameObject.transform.position, 100.0f);
 			Debug.Log ("hit object");
 			destroyed = true;

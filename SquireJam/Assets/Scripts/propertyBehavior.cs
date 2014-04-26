@@ -9,6 +9,7 @@ public class propertyBehavior : MonoBehaviour {
 	public bool onSnow;
 	public bool onEarth;
 
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,8 +17,11 @@ public class propertyBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		constantForce.force = new Vector3 (0, 0, 1);
 
+
+	}
+
+	void growBoulder(){
 
 	}
 }

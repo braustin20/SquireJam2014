@@ -8,7 +8,7 @@ public class propertyBehavior : MonoBehaviour {
 	public bool onIce;
 	public bool onSnow;
 	public bool onEarth;
-
+	public float newScale;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,7 @@ public class propertyBehavior : MonoBehaviour {
 	void Update () {
 
 		if (onFire == true) {
-
+			growBoulder();
 				}
 		if (onWater == true) {
 				
@@ -33,12 +33,14 @@ public class propertyBehavior : MonoBehaviour {
 		if (onEarth == true) {
 				
 				}
-		
+
 	}
 
 	//This function will run code that increases the size of the boulder
 	void growBoulder(){
+		newScale = Mathf.Lerp(1, 5, Time.time);
 
+		gameObject.transform.localScale = new Vector3(newScale, 1, newScale);
 	}
 
 	//This function will run code that decreases the size of the boulder
@@ -47,20 +49,20 @@ public class propertyBehavior : MonoBehaviour {
 	}
 
 	//Function where we will change the boolean variables for the most recent property encountered
-	void OnCollisionEnter(Collider otherObject){
-		if (otherObject.tag == "fire") {
+	void OnCollisionEnter(Collision otherObject){
+		if (otherObject.gameObject.tag == "fire") {
 
 				}
-		if (otherObject.tag == "water") {
+		if (otherObject.gameObject.tag == "water") {
 				
 				}
-		if (otherObject.tag == "ice") {
+		if (otherObject.gameObject.tag == "ice") {
 
 				}
-		if (otherObject.tag == "earth") {
+		if (otherObject.gameObject.tag == "earth") {
 				
 				}
-		if (otherObject.tag == "snow") {
+		if (otherObject.gameObject.tag == "snow") {
 				
 				}
 	}

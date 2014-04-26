@@ -5,8 +5,8 @@ public class RollerControls : MonoBehaviour {
 
 	private GameObject boulder;
 
-	public float strafeSpeed = 1.0f;
-	public float constantSpeed = 1.0f;
+	public float strafeSpeed = 20.0f;
+	public float constantSpeed = 15.0f;
 	public float acceleration = 1.0f;
 
 	private float groundedDelay = 0.5f;

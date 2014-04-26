@@ -5,6 +5,7 @@ public class StaticEnemy: MonoBehaviour {
 	private bool destroyed = false;
 	private float timer = 0.0f;
 
+	public float objectScale = 0.1f;
 	public float deathTime = 2.0f;
 
 	// Use this for initialization
@@ -26,9 +27,10 @@ public class StaticEnemy: MonoBehaviour {
 	void OnCollisionEnter(Collision other)
 	{
 		if(other.collider.gameObject.name == "Boulder"){
-			rigidbody.AddExplosionForce(300.0f, other.gameObject.transform.position, 100.0f);
-			Debug.Log ("hit object");
-			destroyed = true;
+			if(this.objectScale <= other.collider.gameObject.transform.localScale.x){
+				rigidbody.AddExplosionForce(300.0f, other.gameObject.transform.position, 100.0f);
+				destroyed = true;
+			}
 		}
 	}
 }

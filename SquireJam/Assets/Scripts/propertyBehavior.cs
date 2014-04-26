@@ -78,9 +78,7 @@ public class propertyBehavior : MonoBehaviour {
 
 		gameObject.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
 
-		if (gameObject.transform.localScale.x <= 0.01f) {
-			Time.timeScale = 0;
-		}
+
 	}
 
 	//This function will run code that decreases the size of the boulder
@@ -91,26 +89,18 @@ public class propertyBehavior : MonoBehaviour {
 		currentScale = Mathf.Lerp(1, currentScale, Time.time);
 		
 		gameObject.transform.localScale = new Vector3(currentScale, currentScale, currentScale);
+
+		if (gameObject.transform.localScale.x < 0.04f) {
+			Debug.Log ("Poop");
+			shrinking = false;
+			Time.timeScale = 0;
+		}
 	}
 
 	//Function where we will change the boolean variables for the most recent property encountered
 	void OnCollisionEnter(Collision otherObject){
 		Debug.Log ("ENTERED");
-		if (otherObject.gameObject.tag == "fire") {
 
-				}
-		if (otherObject.gameObject.tag == "water") {
-				
-				}
-		if (otherObject.gameObject.tag == "ice") {
-
-				}
-		if (otherObject.gameObject.tag == "earth") {
-				
-				}
-		if (otherObject.gameObject.tag == "snow") {
-				
-				}
 		//Hostile game objects
 		if (otherObject.gameObject.name == "shrinkCube") {
 			shrinking = true;
@@ -135,25 +125,12 @@ public class propertyBehavior : MonoBehaviour {
 			increaseAmount = 0.01f;
 		}
 
+
 	}
 
 	//Function where we will change the boolean variables for the most recent property encountered
 	void OnTriggerEnter(Collider otherObject){
-		if (otherObject.tag == "fire") {
-			
-		}
-		if (otherObject.tag == "water") {
-			
-		}
-		if (otherObject.tag == "ice") {
-			
-		}
-		if (otherObject.tag == "earth") {
-			
-		}
-		if (otherObject.tag == "snow") {
-			
-		}
+
 		//Hostile game objects
 		if (otherObject.gameObject.name == "spikes") {
 			

@@ -14,6 +14,8 @@ public class propertyBehavior : MonoBehaviour {
 	//This bool 
 	bool growing;
 	bool shrinking;
+	float increaseAmount;
+	float shrinkAmount;
 
 	private float timer;
 	// Use this for initialization
@@ -28,7 +30,7 @@ public class propertyBehavior : MonoBehaviour {
 		if (growing == true) {
 			timer += Time.deltaTime;
 			if(timer < 0.05f){
-				growBoulder(0.01f);
+				growBoulder(increaseAmount);
 			}else{
 				growing = false;
 				timer = 0;
@@ -37,7 +39,7 @@ public class propertyBehavior : MonoBehaviour {
 		if (shrinking == true) {
 			timer += Time.deltaTime;
 			if(timer < 0.05f){
-				decreaseBoulder(0.01f);
+				decreaseBoulder(shrinkAmount);
 			}else{
 				shrinking = false;
 				timer = 0;
@@ -105,11 +107,18 @@ public class propertyBehavior : MonoBehaviour {
 		//Hostile game objects
 		if (otherObject.gameObject.name == "shrinkCube") {
 			shrinking = true;
+			shrinkAmount = 0.01f;
 				}
+		if (otherObject.gameObject.name == "Palm") {
+			shrinking = true;
+			shrinkAmount = 0.01f;
+				}
+
 		//Power up game objects
 		if (otherObject.gameObject.name == "powerCube") {
 			Debug.Log("Entered Collision");
 			growing = true;
+			increaseAmount = 0.01f;
 			//growBoulder(0.01f);
 				}
 	}

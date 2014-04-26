@@ -6,25 +6,22 @@ public class TerrainGenerator : MonoBehaviour {
 
 	public Terrain StartTerrain;
 	public Terrain[] TerrainPieces;
-
-	private Terrain start;
-	private Vector3 terrainSize;
+	
 	private Vector3 terrainLocation;
+	private Terrain prevTerrain;
 
 	void Start(){
 
-		terrainSize = StartTerrain.terrainData.size;
 		terrainLocation = new Vector3(0, 0, 0);
-		start = Instantiate(StartTerrain, terrainLocation, Quaternion.identity) as Terrain;
-
-		Instantiate(TerrainPieces[0], new Vector3(0, 0, terrainSize.z), Quaternion.identity);
-
+		prevTerrain = Instantiate(StartTerrain, terrainLocation, Quaternion.identity) as Terrain;
 
 	}
-	
-	void Update () {
 
-		print(start.terrainData.size);
+	void OnCollisionEnter(Collision col){
+
+		if(col.gameObject.tag == "Terrain"){
+			prevTerrain = Instantiate(TerrainPieces[(int)Random.Range(0, TerrainPieces.Length)], new Vector3(0, 0, prevTerrain.GetPosition().z + prevTerrain.terrainData.size.z), Quaternion.identity)as Terrain;
+		}
 
 	}
 }

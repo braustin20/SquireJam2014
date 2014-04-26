@@ -18,7 +18,7 @@ public class propertyBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
+		
 	}
 
 	//This function will run code that increases the size of the boulder
@@ -28,6 +28,11 @@ public class propertyBehavior : MonoBehaviour {
 
 	//This function will run code that decreases the size of the boulder
 	void decreaseBoulder(){
+
+	}
+
+	//Function where we will change the boolean variables for the most recent property encountered
+	void OnCollisionEnter(){
 
 	}
 }

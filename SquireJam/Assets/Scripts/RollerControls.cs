@@ -9,8 +9,11 @@ public class RollerControls : MonoBehaviour {
 	public float constantSpeed = 1.0f;
 	public float acceleration = 1.0f;
 
-	public float groundedDelay = 1.0f;
-	private float timer;
+	private float groundedDelay = 2.0f;
+	private float timer = 0.0f;
+
+	public AudioClip rolling;
+	public AudioClip wind;
 
 	public bool grounded = false;
 	private bool groundedTimerActive = false;
@@ -24,8 +27,12 @@ public class RollerControls : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(groundedTimerActive){
-
+			timer += Time.deltaTime;
+			if(timer >= groundedDelay){
+				grounded = false;
+			}
 		}
+
 
 		if(Input.GetKey(KeyCode.A)){
 			boulder.rigidbody.AddForce(new Vector3(-1.0f, 0, 0) * strafeSpeed); 
@@ -42,12 +49,14 @@ public class RollerControls : MonoBehaviour {
 	}
 	void OnCollisionExit(Collision other){
 		if(other.collider.gameObject.tag == "Terrain"){
-			groundedTriggerActive = false;
+			groundedTimerActive = true;
+			timer = 0.0f;
 		}
 	}
 	void OnCollisionEnter(Collision other){
 		if(other.collider.gameObject.tag == "Terrain"){
-			groundedTriggerActive = true;
+			groundedTimerActive = false;
+			grounded = true;
 		}
 	}
 }

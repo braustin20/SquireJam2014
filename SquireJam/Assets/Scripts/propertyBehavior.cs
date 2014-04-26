@@ -32,7 +32,40 @@ public class propertyBehavior : MonoBehaviour {
 	}
 
 	//Function where we will change the boolean variables for the most recent property encountered
-	void OnCollisionEnter(){
+	void OnCollisionEnter(Collider otherObject){
+		if (otherObject.tag == "fire") {
 
+				}
+		if (otherObject.tag == "water") {
+				
+				}
+		if (otherObject.tag == "ice") {
+
+				}
+		if (otherObject.tag == "earth") {
+				
+				}
+		if (otherObject.tag == "snow") {
+				
+				}
+	}
+
+	//Function where we will change the boolean variables for the most recent property encountered
+	void OnTriggerEnter(Collider otherObject){
+		if (otherObject.tag == "fire") {
+			
+		}
+		if (otherObject.tag == "water") {
+			
+		}
+		if (otherObject.tag == "ice") {
+			
+		}
+		if (otherObject.tag == "earth") {
+			
+		}
+		if (otherObject.tag == "snow") {
+			
+		}
 	}
 }

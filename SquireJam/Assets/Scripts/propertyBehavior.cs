@@ -101,16 +101,16 @@ public class propertyBehavior : MonoBehaviour {
 	void OnCollisionEnter(Collision otherObject){
 
 		//Game Objects and values they give
-		if (otherObject.gameObject.name == "shrinkCube") {
+		if (otherObject.gameObject.name == "shrinkCube" && gameObject.transform.localScale.x < 1.0f) {
 			shrinking = true;
 			shrinkAmount = 0.01f;
 				}
 
 
-		if (otherObject.gameObject.name == "Palm" ) {
+		if (otherObject.gameObject.name == "Palm" && gameObject.transform.localScale.x < 1.0f) {
 			if(gameObject.transform.localScale.x >= 0.2f){
 			growing = true;
-			increaseAmount = 0.03f;
+			increaseAmount = 0.02f;
 			}else{
 				shrinking = true;
 				shrinkAmount = 0.01f;
@@ -118,20 +118,20 @@ public class propertyBehavior : MonoBehaviour {
 				}
 
 		
-		if (otherObject.gameObject.name == "powerCube") {
+		if (otherObject.gameObject.name == "powerCube" && gameObject.transform.localScale.x < 1.0f) {
 			Debug.Log("Entered Collision");
 			growing = true;
 			increaseAmount = 0.01f;
 			//growBoulder(0.01f);
 				}
 
-		if (otherObject.gameObject.name == "Bush") {
+		if (otherObject.gameObject.name == "Bush" && gameObject.transform.localScale.x < 1.0f) {
 			Debug.Log ("Hit bush");
 			growing = true;
 			increaseAmount = 0.015f;
 		}
 
-		if (otherObject.gameObject.name == "Cube") {
+		if (otherObject.gameObject.name == "Cube" && gameObject.transform.localScale.x < 1.0f) {
 			if(gameObject.transform.localScale.x >= 0.2f){
 				growing = true;
 				increaseAmount = 0.05f;
@@ -141,28 +141,52 @@ public class propertyBehavior : MonoBehaviour {
 			}
 				}
 
-		if (otherObject.gameObject.name == "JapaneseMaple") {
+		if (otherObject.gameObject.name == "JapaneseMaple" && gameObject.transform.localScale.x < 1.0f) {
 			if(gameObject.transform.localScale.x >= 0.4f){
 				growing = true;
-				increaseAmount = 0.06f;
+				increaseAmount = 0.03f;
 			}else{
 				shrinking = true;
 				shrinkAmount = 0.03f;
 			}
 		}
 
-		if (otherObject.gameObject.name == "watchTower") {
+		if (otherObject.gameObject.name == "watchTower" && gameObject.transform.localScale.x < 1.0f) {
 			if(gameObject.transform.localScale.x >= 0.8f){
 				growing = true;
 				increaseAmount = 0.2f;
 			}else{
 				shrinking = true;
-				shrinkAmount = 0.15f;
+				shrinkAmount = 0.1f;
 			}
 				}
 
+		if (otherObject.gameObject.name == "house" && gameObject.transform.localScale.x < 1.0f) {
+			if(gameObject.transform.localScale.x >= 0.5f){
+				growing = true;
+				increaseAmount = 0.1f;
+			}else{
+				shrinking = true;
+				shrinkAmount = 0.09f;
+			}
+				}
 
-
+		if (otherObject.gameObject.name == "castleOrGG" && gameObject.transform.localScale.x < 1.0f) {
+				shrinking = true;
+				shrinkAmount = 0.25f;
+				}
+		if (otherObject.gameObject.tag == "bus" && gameObject.transform.localScale.x < 1.0f) {
+			if(gameObject.transform.localScale.x >= 0.5f){
+				growing = true;
+				increaseAmount = 0.05f;
+			}else{
+				shrinking = true;
+				shrinkAmount = 0.09f;
+			}
+		}
+		
+		
+		
 	}
 
 	//Function where we will change the boolean variables for the most recent property encountered

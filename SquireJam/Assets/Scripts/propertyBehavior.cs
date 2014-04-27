@@ -45,6 +45,8 @@ public class propertyBehavior : MonoBehaviour {
 				timer = 0;
 			}
 		}
+
+
 	}
 
 	//This function will run code that increases the size of the boulder.
@@ -110,10 +112,11 @@ public class propertyBehavior : MonoBehaviour {
 			increaseAmount = 0.01f;
 		}
 
+		//THIS IS THE FENCE
 		if (otherObject.gameObject.name == "Cube" && gameObject.transform.localScale.x < 1.0f) {
-			if(gameObject.transform.localScale.x >= 0.2f){
+			if(gameObject.transform.localScale.x >= 0.15f){
 				growing = true;
-				increaseAmount = 0.05f;
+				increaseAmount = 0.03f;
 			}else{
 				shrinking = true;
 				shrinkAmount = 0.02f;

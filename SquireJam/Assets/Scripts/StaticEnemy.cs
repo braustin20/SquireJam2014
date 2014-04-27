@@ -8,6 +8,8 @@ public class StaticEnemy: MonoBehaviour {
 	public float objectScale = 0.1f;
 	public float deathTime = 2.0f;
 
+	public AudioClip smashSound;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -39,6 +41,13 @@ public class StaticEnemy: MonoBehaviour {
 					this.transform.parent.gameObject.AddComponent<Rigidbody>();
 					this.transform.parent.rigidbody.mass = 0.01f;
 					this.transform.parent.rigidbody.AddForce(new Vector3(0, 0, 1.0f) * 100.0f);
+				}
+				if(smashSound != null){
+					if(gameObject.audio != null){
+						gameObject.AddComponent<AudioSource>();
+						audio.clip = smashSound;
+						audio.Play();
+					}
 				}
 			}
 		}

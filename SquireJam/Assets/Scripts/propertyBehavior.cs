@@ -110,7 +110,7 @@ public class propertyBehavior : MonoBehaviour {
 		if (otherObject.gameObject.name == "Bush" && gameObject.transform.localScale.x < 1.0f) {
 			Debug.Log ("Hit bush");
 			growing = true;
-			increaseAmount = 0.002f;
+			increaseAmount = 0.007f;
 		}
 
 		//THIS IS THE FENCE

@@ -99,31 +99,68 @@ public class propertyBehavior : MonoBehaviour {
 
 	//Function where we will change the boolean variables for the most recent property encountered
 	void OnCollisionEnter(Collision otherObject){
-		Debug.Log ("ENTERED");
 
-		//Hostile game objects
+		//Game Objects and values they give
 		if (otherObject.gameObject.name == "shrinkCube") {
 			shrinking = true;
 			shrinkAmount = 0.01f;
 				}
-		if (otherObject.gameObject.name == "Palm" ) {
-			shrinking = true;
-			shrinkAmount = 0.01f;
 
+
+		if (otherObject.gameObject.name == "Palm" ) {
+			if(gameObject.transform.localScale.x >= 0.2f){
+			growing = true;
+			increaseAmount = 0.03f;
+			}else{
+				shrinking = true;
+				shrinkAmount = 0.01f;
+			}
 				}
 
-		//Power up game objects
+		
 		if (otherObject.gameObject.name == "powerCube") {
 			Debug.Log("Entered Collision");
 			growing = true;
 			increaseAmount = 0.01f;
 			//growBoulder(0.01f);
 				}
+
 		if (otherObject.gameObject.name == "Bush") {
 			Debug.Log ("Hit bush");
 			growing = true;
-			increaseAmount = 0.01f;
+			increaseAmount = 0.015f;
 		}
+
+		if (otherObject.gameObject.name == "Cube") {
+			if(gameObject.transform.localScale.x >= 0.2f){
+				growing = true;
+				increaseAmount = 0.05f;
+			}else{
+				shrinking = true;
+				shrinkAmount = 0.01f;
+			}
+				}
+
+		if (otherObject.gameObject.name == "JapaneseMaple") {
+			if(gameObject.transform.localScale.x >= 0.4f){
+				growing = true;
+				increaseAmount = 0.06f;
+			}else{
+				shrinking = true;
+				shrinkAmount = 0.03f;
+			}
+		}
+
+		if (otherObject.gameObject.name == "watchTower") {
+			if(gameObject.transform.localScale.x >= 0.8f){
+				growing = true;
+				increaseAmount = 0.2f;
+			}else{
+				shrinking = true;
+				shrinkAmount = 0.15f;
+			}
+				}
+
 
 
 	}

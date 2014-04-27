@@ -45,27 +45,6 @@ public class propertyBehavior : MonoBehaviour {
 				timer = 0;
 			}
 		}
-		
-		
-		if (onFire == true) {
-
-				}
-		if (onWater == true) {
-				
-				}
-		if (onIce == true) {
-				
-				}
-		if (onSnow == true) {
-				
-				}
-		if (onEarth == true) {
-				
-				}
-
-
-
-
 	}
 
 	//This function will run code that increases the size of the boulder.
@@ -128,7 +107,7 @@ public class propertyBehavior : MonoBehaviour {
 		if (otherObject.gameObject.name == "Bush" && gameObject.transform.localScale.x < 1.0f) {
 			Debug.Log ("Hit bush");
 			growing = true;
-			increaseAmount = 0.015f;
+			increaseAmount = 0.01f;
 		}
 
 		if (otherObject.gameObject.name == "Cube" && gameObject.transform.localScale.x < 1.0f) {
@@ -137,7 +116,7 @@ public class propertyBehavior : MonoBehaviour {
 				increaseAmount = 0.05f;
 			}else{
 				shrinking = true;
-				shrinkAmount = 0.01f;
+				shrinkAmount = 0.02f;
 			}
 				}
 

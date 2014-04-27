@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		print(Time.time - startTime);
+		//print(Time.time - startTime);
 	
 	}
 

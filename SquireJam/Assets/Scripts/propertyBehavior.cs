@@ -26,6 +26,7 @@ public class propertyBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (currentScale);
 
 		if (growing == true) {
 			timer += Time.deltaTime;
@@ -109,7 +110,7 @@ public class propertyBehavior : MonoBehaviour {
 		if (otherObject.gameObject.name == "Bush" && gameObject.transform.localScale.x < 1.0f) {
 			Debug.Log ("Hit bush");
 			growing = true;
-			increaseAmount = 0.01f;
+			increaseAmount = 0.002f;
 		}
 
 		//THIS IS THE FENCE
@@ -170,17 +171,5 @@ public class propertyBehavior : MonoBehaviour {
 		
 		
 	}
-
-	//Function where we will change the boolean variables for the most recent property encountered
-	void OnTriggerEnter(Collider otherObject){
-
-		//Hostile game objects
-		if (otherObject.gameObject.name == "spikes") {
-			
-		}
-		//Power up game objects
-		if (otherObject.gameObject.name == " ") {
-			
-		}
-	}
+	
 }

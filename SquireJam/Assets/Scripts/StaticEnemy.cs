@@ -26,8 +26,8 @@ public class StaticEnemy: MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision other)
 	{
-		if(other.collider.gameObject.tag != "Terrain"){
-			if(this.objectScale <= other.collider.gameObject.transform.localScale.x){
+		if(other.collider.gameObject.tag == "Player"){
+			if(this.objectScale <= other.collider.gameObject.transform.localScale.x && !destroyed){
 				if(this.rigidbody == null){
 					this.gameObject.AddComponent<Rigidbody>();
 				}
@@ -35,6 +35,11 @@ public class StaticEnemy: MonoBehaviour {
 				rigidbody.AddForce(new Vector3(0, 0, 1.0f) * 100.0f);
 				//rigidbody.AddExplosionForce(3000.0f, other.gameObject.transform.position, 10.0f);
 				destroyed = true;
+				if(this.name == "Cube"){
+					this.transform.parent.gameObject.AddComponent<Rigidbody>();
+					this.transform.parent.rigidbody.mass = 0.01f;
+					this.transform.parent.rigidbody.AddForce(new Vector3(0, 0, 1.0f) * 100.0f);
+				}
 			}
 		}
 	}
